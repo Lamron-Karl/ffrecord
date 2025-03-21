@@ -83,7 +83,7 @@ writer.close()
 ### Read
 
 To create a `FileReader` object, you only need to specify the file name.
-And then you could call `FileWriter.read()` to read multiple samples from the FFReocrd file.
+And then you could call `FileReader.read_batch()` to read multiple samples from the FFReocrd file.
 It accepts a list of indices as input and outputs the corresponding samples data.
 
 The reader would validate the checksum before returning the data if `check_data = True`.
@@ -105,7 +105,7 @@ reader = FileReader(fname, check_data=True)
 print(f'Number of samples: {reader.n}')
 
 indices = [3, 6, 0, 10]      # indices of each sample
-data = reader.read(indices)  # return a list of bytes-like data
+data = reader.read_batch(indices)  # return a list of bytes-like data
 
 for i in range(n):
     sample = deserialize(data[i])
